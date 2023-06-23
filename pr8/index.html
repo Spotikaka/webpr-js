@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR8</title>
+</head>
+
+<body>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+        div {
+            margin: 6px 0 10px 0;
+        }
+        button {
+            margin: 0 2px 0 6px;
+        }
+    </style>
+    <div>
+        <label for="priceInput">Price:</label>
+        <input id="priceInput" type="number">
+
+        <div style="display: flex; align-items: baseline;">
+            <div id="divPrice"></div>
+            <button id="btn">X</button>
+        </div>
+
+        <div id="error"></div>
+    </div>
+    <script>
+        const priceInput = document.getElementById('priceInput');
+        const errorSpan = document.getElementById('error');
+        const btn = document.getElementById('btn');
+        const divPrice = document.getElementById('divPrice');
+
+        errorSpan.style.display = 'none';
+        btn.style.display = 'none';
+        divPrice.style.display = 'none';
+
+        priceInput.addEventListener('focus', () => {
+            priceInput.style.border = '2px solid green';
+        });
+
+        priceInput.addEventListener('blur', () => {
+            priceInput.style.border = '';
+            const priceValue = priceInput.value;
+            errorSpan.style.display = 'none';
+            if (priceValue < 0) {
+                priceInput.classList.add('error');
+                showError('Please enter correct price');
+            } else {
+                priceInput.classList.remove('error');
+                showPriceValue(priceValue);
+            }
+        });
+
+        function showPriceValue(price) {
+            divPrice.textContent = `Текущая цена: ${price}`;
+            btn.style.display = 'block';
+            btn.addEventListener('click', () => {
+                priceInput.value = '';
+                btn.style.display = 'none';
+                divPrice.style.display = 'none';
+            });
+            divPrice.style.display = 'block';
+        }
+
+        function showError(message) {
+            errorSpan.textContent = message;
+            errorSpan.style.color = 'red';
+            errorSpan.style.display = 'block';
+            btn.style.display = 'none';
+            divPrice.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR7</title>
+</head>
+<body>
+    <style>
+        ul, li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            margin: 6px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
+    <script>
+        function checkList(array) {
+            const listItems = array.map(item => `<li>${item}</li>`).join('');
+            const listBlock = document.createElement('ul');
+            listBlock.innerHTML = listItems;
+            document.body.appendChild(listBlock);
+        }
+
+        const array = ['hello', 'world', 'Kiev', 'Kharkiv', 'Odessa', 'Lviv'];
+        // console.log(array);
+        checkList(array);
+    </script>
+</body>
+</html>

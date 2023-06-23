@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR3</title>
+</head>
+<body>
+    <script>
+        function calculate(num1, num2, mathOperator) {
+            switch (mathOperator) {
+                case "+":
+                return num1 + num2;
+                case "-":
+                return num1 - num2;
+                case "*":
+                return num1 * num2;
+                case "/":
+                return num1 / num2;
+                default:
+                return "Помилка";
+            }
+        }
+
+        const a = parseFloat(prompt("Введіть перше число:"));
+        const b = parseFloat(prompt("Введіть друге число:"));
+        const mathOperator = prompt("Виберіть математичну операцію (+, -, *, /):");
+
+        const result = calculate(a, b, mathOperator);
+        console.log(result);
+    </script>
+</body>
+</html>

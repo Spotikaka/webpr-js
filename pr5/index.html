@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR5</title>
+</head>
+<body>
+    <script>
+        function createNewUser() {
+            const firstName = prompt("Введіть ім'я:");
+            const lastName = prompt("Введіть прізвище:");
+            const birthday = prompt("Введіть вашу дату народження y форматі dd.mm.yyyy:");
+
+            const newUser = {
+                firstName: firstName,
+                lastName: lastName,
+                birthday: birthday,
+                getAge: function() {
+                    const currentDate = new Date();
+                    const birthDate = new Date(this.birthday);
+                    const age = currentDate.getFullYear() - birthDate.getFullYear();
+                    return age;
+                },
+                getPassword: function() {
+                    const firstLetter = this.firstName.charAt(0).toUpperCase();
+                    const lastNameLower = this.lastName.toLowerCase();
+                    const birthYear = this.birthday.slice(-4);
+                    return firstLetter + lastNameLower + birthYear;
+                }
+            };
+
+            return newUser;
+        }
+
+        const user = createNewUser();
+        const age = user.getAge();
+        const password = user.getPassword();
+
+        console.log(user);
+        console.log("Age: " + age);
+        console.log("Password: " + password);
+    </script>
+</body>
+</html>

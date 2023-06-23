@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR1js</title>
+</head>
+<body>
+    <script>
+        function showMessage(message) {
+        return prompt(message);
+        }
+
+        let name = showMessage("Введіть ім'я:");
+        let age = showMessage("Скільки вам років?");
+
+        while (!name || isNaN(age)) {
+        name = showMessage("Введіть ім'я:", name);
+        age = showMessage("Скільки вам років?", age);
+        }
+
+        age = parseInt(age);
+
+        if (age < 18) {
+        alert("You are not allowed to visit this website. Розбійник.");
+        } else if (age >= 18 && age <= 22) {
+        const confirmForm = confirm("Are you sure you want to continue?");
+        if (confirmForm) {
+            alert("Welcome, " + name);
+        } else {
+            alert("You are not allowed to visit this website.");
+        }
+        } else {
+        alert("Welcome, " + name);
+        }
+    </script>
+</body>
+</html>
